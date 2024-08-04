@@ -27,16 +27,6 @@ public class Task {
     private String description;
 
     @ManyToOne
-    @JoinColumn(name = "status_id", nullable = false)
-    @NonNull
-    private Status status;
-
-    @ManyToOne
-    @JoinColumn(name = "priority_id", nullable = false)
-    @NonNull
-    private Priority priority;
-
-    @ManyToOne
     @JoinColumn(name = "author_id", nullable = false)
     @NonNull
     private User author;
