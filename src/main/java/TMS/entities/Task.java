@@ -1,7 +1,12 @@
 package TMS.entities;
 
+import TMS.entities.enums.PriorityEnum;
+import TMS.entities.enums.RoleEnum;
+import TMS.entities.enums.StatusEnum;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
@@ -17,7 +22,7 @@ public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private Long id;
 
     @Column(name = "title", nullable = false)
     @NonNull
@@ -31,14 +36,24 @@ public class Task {
     @NonNull
     private User author;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "priority", nullable = false)
+    private PriorityEnum priorityEnum;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status", nullable = false)
+    private StatusEnum statusEnum;
+
     @ManyToOne
     @JoinColumn(name = "assignee_id", nullable = false)
     @NonNull
     private User assignee;
 
-    @Column(name = "created_at", nullable = false)
+    @Column(name = "created_at", updatable = false, columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
+    @CreationTimestamp
     private LocalDateTime createdAt;
 
-    @Column(name = "updated_at", nullable = false)
+    @Column(name = "updated_at", columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP")
+    @UpdateTimestamp
     private LocalDateTime updatedAt;
 }

@@ -1,8 +1,7 @@
 package TMS.dto;
 
-import TMS.entities.Priority;
-import TMS.entities.Status;
-import TMS.entities.User;
+import TMS.entities.enums.PriorityEnum;
+import TMS.entities.enums.StatusEnum;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -13,10 +12,11 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TaskDTO {
+    private Long id;
     private String title;
     private String description;
-    private Long statusId;
-    private Long priorityId;
+    private StatusEnum statusEnum;
+    private PriorityEnum priorityEnum;
     private Long authorId;
     private Long assigneeId;
     private LocalDateTime createdAt;

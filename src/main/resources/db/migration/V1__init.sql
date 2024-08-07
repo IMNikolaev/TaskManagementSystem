@@ -11,27 +11,12 @@ CREATE TABLE tasks (
     description TEXT,
     author_id BIGINT NOT NULL,
     assignee_id BIGINT,
+    status VARCHAR(50) NOT NULL,
+    priority VARCHAR(50) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (status_id) REFERENCES status(id),
-    FOREIGN KEY (priority_id) REFERENCES priority(id),
     FOREIGN KEY (author_id) REFERENCES users(id),
     FOREIGN KEY (assignee_id) REFERENCES users(id)
-);
-
-CREATE TABLE status (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(50) NOT NULL,
-    task_id BIGINT NOT NULL,
-    FOREIGN KEY (task_id) REFERENCES tasks(id)
-
-);
-
-CREATE TABLE priority (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(50) NOT NULL,
-    task_id BIGINT NOT NULL,
-    FOREIGN KEY (task_id) REFERENCES tasks(id)
 );
 
 CREATE OR REPLACE FUNCTION update_updated_at_column()

@@ -1,6 +1,6 @@
 package TMS.services.auth;
 
-import TMS.entities.Role;
+import TMS.entities.enums.RoleEnum;
 import TMS.entities.User;
 import TMS.repositiories.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -35,6 +35,10 @@ public class UserService {
         }
 
         return save(user);
+    }
+
+    public User findById(Long id) {
+        return repository.findById(id).orElse(null);
     }
 
     /**
@@ -79,7 +83,7 @@ public class UserService {
     @Deprecated
     public void getAdmin() {
         var user = getCurrentUser();
-        user.setRole(Role.ROLE_ADMIN);
+        user.setRoleEnum(RoleEnum.ROLE_ADMIN);
         save(user);
     }
 }

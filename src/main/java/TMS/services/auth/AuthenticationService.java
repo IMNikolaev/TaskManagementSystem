@@ -3,7 +3,7 @@ package TMS.services.auth;
 import TMS.dto.auth.JwtAuthenticationResponse;
 import TMS.dto.auth.SignInRequest;
 import TMS.dto.auth.SignUpRequest;
-import TMS.entities.Role;
+import TMS.entities.enums.RoleEnum;
 import TMS.entities.User;
 
 import lombok.RequiredArgsConstructor;
@@ -31,7 +31,7 @@ public class AuthenticationService {
         var user = User.builder()
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
-                .role(Role.ROLE_USER)
+                .roleEnum(RoleEnum.ROLE_USER)
                 .build();
 
         userService.create(user);
