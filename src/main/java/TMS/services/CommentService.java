@@ -6,8 +6,6 @@ import TMS.entities.Task;
 import TMS.entities.User;
 import TMS.repositiories.CommentRepository;
 import TMS.repositiories.TaskRepository;
-import TMS.repositiories.UserRepository;
-import TMS.services.auth.UserService;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
