@@ -1,7 +1,6 @@
 package TMS.entities;
 
 import TMS.entities.enums.PriorityEnum;
-import TMS.entities.enums.RoleEnum;
 import TMS.entities.enums.StatusEnum;
 import jakarta.persistence.*;
 import lombok.*;
